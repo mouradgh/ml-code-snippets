@@ -42,7 +42,7 @@ classifier.fit(X_train,y_train)
 classifier.score(X_test,y_test)
 
 # predict the species of a flower with SepalLengthCm = 5.4, SepalWidthCm = 2.6, PetalLengthCm = 4.1, PetalWidthCm = 1.3
-classifier.predict([[5.4,2.6,4.1,1.3]]
+classifier.predict([[5.4, 2.6, 4.1, 1.3]])
 
 # Metrics for classification
 # To compute the detailed metrics we need two values, the original values and the predicted values
