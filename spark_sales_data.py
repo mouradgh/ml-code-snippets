@@ -11,7 +11,7 @@ from pyspark import SparkContext
 sc = SparkContext(appName="RetailStoreSalesAnalysis")
 
 # Load the CSV file
-raw_data = sc.textFile("Retailsales.csv")
+raw_data = sc.textFile("Files/Retailsales.csv")
 
 
 # Parse and Clean Data
@@ -84,12 +84,12 @@ stock_per_product = cleaned_data.map(lambda x: (x['product_id'], x['stock'])) \
                                 .reduceByKey(lambda a, b: a + b)
 
 # Save results to HDFS
-sales_revenue_per_product.saveAsTextFile("sales_revenue_per_product")
-sales_revenue_per_store.saveAsTextFile("sales_revenue_per_store")
-average_price_per_product.saveAsTextFile("average_price_per_product")
-sales_revenue_per_promo_1.saveAsTextFile("sales_revenue_per_promo_1")
-sales_revenue_per_promo_2.saveAsTextFile("sales_revenue_per_promo_2")
-stock_per_product.saveAsTextFile("stock_per_product")
+sales_revenue_per_product.saveAsTextFile("RDD/sales_revenue_per_product")
+sales_revenue_per_store.saveAsTextFile("RDD/sales_revenue_per_store")
+average_price_per_product.saveAsTextFile("RDD/average_price_per_product")
+sales_revenue_per_promo_1.saveAsTextFile("RDD/sales_revenue_per_promo_1")
+sales_revenue_per_promo_2.saveAsTextFile("RDD/sales_revenue_per_promo_2")
+stock_per_product.saveAsTextFile("RDD/stock_per_product")
 
 # Print results
 print("Total Sales and Revenue per Product:")
