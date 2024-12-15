@@ -18,6 +18,7 @@ raw_data = sc.textFile("Files/Retailsales.csv")
 def parse_line(line):
     # Split the line by comma to get fields
     fields = line.split(",")
+    
     # Return a dictionary with parsed fields
     return {
         'product_id': fields[0],
