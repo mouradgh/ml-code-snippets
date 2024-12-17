@@ -3,7 +3,7 @@
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 
-#import functions for train test split
+# import functions for train test split
 from sklearn.model_selection import train_test_split
 
 # import functions for metrics
@@ -21,28 +21,30 @@ df.sample(5)
 df.shape
 
 # Create a scatter plot of Horsepower versus mileage to visualize the relationship between them
-df.plot.scatter(x = "Horsepower", y = "MPG")
+df.plot.scatter(x="Horsepower", y="MPG")
 
 # Target is the value that our machine learning model needs to predict
 y = df["MPG"]
 
 # Features are the values our machine learning model learns from
-X = df[["Horsepower","Weight"]]
+X = df[["Horsepower", "Weight"]]
 
 # Split the data set into 70% training data and 30% testing data
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.30, random_state=42
+)
 
 # Create a linear regression model
 lr = LinearRegression()
 
 # Train/fit the model
-lr.fit(X_train,y_train)
+lr.fit(X_train, y_train)
 
 # Evaluate the model. Higher the number, better the score
 lr.score(X_test, y_test)
 
 # Predict the mileage for a car with HorsePower = 100 and Weight = 2000
-lr.predict([[100,2000]])
+lr.predict([[100, 2000]])
 
 # Metrics for regression
 # To compute the detailed metrics we need two values, the original mileage and the predicted mileage.

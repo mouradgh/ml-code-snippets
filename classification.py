@@ -3,7 +3,7 @@
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 
-#import functions for train test split
+# import functions for train test split
 from sklearn.model_selection import train_test_split
 
 # functions for metrics
@@ -27,19 +27,32 @@ df.Species.value_counts().plot.bar()
 y = df["Outcome"]
 
 # Features are the values our machine learning model learns from
-X = df[['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age']]
+X = df[
+    [
+        "Pregnancies",
+        "Glucose",
+        "BloodPressure",
+        "SkinThickness",
+        "Insulin",
+        "BMI",
+        "DiabetesPedigreeFunction",
+        "Age",
+    ]
+]
 
 # Split the data set into 70% training data and 30% testing data
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=40)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.30, random_state=40
+)
 
 # Create a Logistic Regression model
 classifier = LogisticRegression()
 
 # Train/Fit the model
-classifier.fit(X_train,y_train)
+classifier.fit(X_train, y_train)
 
 # Evaluate the model
-classifier.score(X_test,y_test)
+classifier.score(X_test, y_test)
 
 # predict the species of a flower with SepalLengthCm = 5.4, SepalWidthCm = 2.6, PetalLengthCm = 4.1, PetalWidthCm = 1.3
 classifier.predict([[5.4, 2.6, 4.1, 1.3]])
